@@ -1,5 +1,5 @@
 from math import dist
-from numpy import random, unique, square, power
+from numpy import random, unique, square, power, linalg, array
 from matplotlib.pyplot import axis, plot, figure, show, legend
 from matplotlib.patches import Circle
 
@@ -84,11 +84,35 @@ def ex2(n):
     print(f"pi is approx : {4 * probability}")
 
 
+def is_obtuse_triangle(x, y):
+    # Überprüfen, ob das Dreieck mit den Koordinaten x und y einen stumpfen Winkel hat
+    sides = [
+        linalg.norm(x - y),
+        linalg.norm(x),
+        linalg.norm(y)
+    ]
+    sides.sort()
+    return sides[0] ** 2 + sides[1] ** 2 < sides[2] ** 2
+
+
+def ex3(n):
+    a, b, c, d = [0, 0], [1, 0], [1, 1], [0, 1]
+    axis('square')
+    axis((0, 1, 0, 1))
+    count1 = 0
+    count2 = 0
+    for _ in range(n):
+        x = [random.random(), random.rand()]
+        da, db, dc, dd = dist(x, a), dist(x, b), dist(x, c), dist(x, d)
+        st = (da ** 2 + db ** 2 < 1) + ()
+
+
 def main():
     print(f"ex1 : {ex1()}")
     print(f"ex1_theoretic : {ex1_theoretic():.6f}")
     # example()
-    ex2(1000)
+    # ex2(1000)
+    ex3(1000)
 
 
 main()
