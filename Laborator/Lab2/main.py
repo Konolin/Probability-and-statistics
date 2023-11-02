@@ -6,8 +6,8 @@ from matplotlib.patches import Circle
 
 def same_birthday():
     # two people in a group of 23 people have the same birthday
-    array = random.randint(1, 366, 23)
-    return len(array) != len(unique(array))
+    birthday_array = random.randint(1, 366, 23)
+    return len(birthday_array) != len(unique(birthday_array))
 
 
 def ex1():
